@@ -1,0 +1,106 @@
+html{
+  background-color: white;
+}
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size-adjust: .5;
+  font-size: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+h1, h2 {
+  color: #222;
+}
+
+section {
+  margin-bottom: 1.25em;
+  border-top: 1px solid black;
+}
+
+#contact {
+  font-size: 0.9em;
+  margin: 1em auto;
+}
+
+.gpa {
+  font-style: italic;
+  color: #333;
+  line-height: 1.5;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+#wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 50em;
+}
+
+header, footer {
+  padding: 0 1em;
+  text-align: center;
+  margin: 1em auto 1em;
+}
+
+.time {
+  float: right;
+  font-weight: 700;
+}
+
+#title, #name {
+  margin: 0;
+}
+
+#summary, .description {
+  text-align: justify;
+  text-justify: inter-word;
+  line-height: 1.5;
+}
+
+.description {
+  padding-left: 1em;
+  margin-top: .5em;
+}
+
+.item-text {
+  margin: .5em auto;
+}
+
+header p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.list-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
+  gap: .5em;
+  padding-left: 1em;
+}
+
+footer {
+  font-size: .8em;
+  border-top: 1px solid black;
+  padding: 1em 1em;
+}
+
+@media print {
+  .item {
+    page-break-inside: avoid;
+  }
+
+  h2 {
+    page-break-after: avoid;
+  }
+}

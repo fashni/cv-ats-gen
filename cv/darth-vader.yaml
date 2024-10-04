@@ -1,0 +1,66 @@
+name: Darth Vader
+title: Sith Lord
+summary: Accomplished leader with over two decades of experience in military command and strategic operations. Demonstrated expertise in overseeing large-scale military campaigns, managing high-profile projects, and enforcing operational efficiency across intergalactic forces. A skilled negotiator and tactician, with a background in advanced combat techniques and force manipulation. Adept at managing personnel, fostering loyalty, and ensuring the effective execution of leadership directives. Proven track record in delivering results under high-pressure conditions, with a strong commitment to achieving organisational goals.
+contact:
+  email: darth.vader@sith.faith
+  phone: +0000-666-1313
+  address: Imperial Palace, Coruscant
+  website: https://sith.faith
+  linkedin: https://linkedin.com/in/darthvader
+
+education:
+  - degree: Sith Apprenticeship
+    institution: The Dark Side Academy, under Emperor Palpatine
+    year: 19 BBY
+    gpa: 4.0
+    description:
+      - Immersed in Dark Side teachings, including the manipulation of fear, anger, and hatred
+      - Learned to control and weaponise pain and suffering to fuel power
+      - Trained in commanding Sith military forces and political manipulation
+
+  - degree: Jedi Training
+    institution: Jedi Temple, Coruscant
+    year: 22 BBY
+    gpa: 2.3
+    description:
+      - Trained in advanced lightsaber combat, particularly Form V (Djem So)
+      - Mastered the Force, excelling in abilities like telekinesis, mind control, and precognition
+      - Mentored by Jedi Knight Obi-Wan Kenobi, with emphasis on lightsaber duelling and piloting
+
+experience:
+  - title: Supreme Commander of the Imperial Fleet
+    company: Galactic Empire
+    duration: 19 BBY - 4 ABY
+    description:
+      - Enforced the Emperor's will by commanding fleets and overseeing military operations across the galaxy
+      - Hunted down and eliminated Jedi survivors through the Great Jedi Purge
+      - Personally led the construction and oversight of the Death Star project
+
+  - title: Jedi Knight
+    company: Jedi Order, Galactic Republic
+    duration: 22 BBY - 19 BBY
+    description:
+      - Played a pivotal role in major battles during the Clone Wars
+      - Known for exceptional piloting skills
+      - Mentored Ahsoka Tano and collaborated closely with Obi-Wan Kenobi
+
+certifications:
+  - title: Dark Side Mastery
+    issuer: Sith Order
+    year: 19 BBY
+  - title: Lightsaber Mastery (Form V)
+    issuer: Jedi Order
+    year: 20 BBY
+
+skills:
+  - Lightsaber combat
+  - Telekinesis
+  - Force choke
+  - Mind manipulation
+  - Intimidation
+
+languages:
+  - Galactic Basic
+  - Huttese
+  - Binary
+  - Sith

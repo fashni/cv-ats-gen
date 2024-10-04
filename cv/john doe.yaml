@@ -1,0 +1,56 @@
+name: John Doe
+title: Software Developer
+summary: An experienced software developer with a focus on backend development using Rust, Python, and cloud services.
+contact:
+  email: john.doe@example.com
+  phone: +44 1234 567890
+  address: 123 Example St, London, UK
+  website: https://johndoe.io
+  linkedin: https://linkedin.com/in/johndoe
+
+education:
+  - degree: B.Sc. in Computer Science
+    institution: University of London
+    year: 2015 - 2019
+    gpa: 3.8
+    description:
+      - Completed coursework in algorithms, data structures, and AI.
+      - Graduated with honours
+      - Led a team project that built a web application for managing university events
+  - degree: M.Sc. in Software Engineering
+    institution: Imperial College London
+    year: 2020 - 2021
+    gpa: 4.0
+
+experience:
+  - title: Backend Developer
+    company: TechCorp
+    duration: 2019 - Present
+    description:
+      - Developed and maintained RESTful APIs
+      - Worked with Rust, PostgreSQL, and AWS
+  - title: Intern
+    company: SoftDev Ltd
+    duration: 2018 - 2019
+    description:
+      - Assisted in software development using Python
+      - Created scripts for automation
+
+certifications:
+  - title: Certified Kubernetes Administrator
+    issuer: CNCF
+    year: 2021
+  - title: AWS Certified Solutions Architect
+    issuer: Amazon
+    year: 2020
+
+skills:
+  - Rust
+  - Python
+  - SQL
+  - AWS
+
+languages:
+  - English
+  - Japanese
+  - Spanish
