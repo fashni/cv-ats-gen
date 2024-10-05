@@ -10,6 +10,7 @@ fn main() {
   println!("Server is running on http://localhost:8080");
 
   for request in server.incoming_requests() {
-    handle_request(request);
+    let response = handle_request(&request);
+    request.respond(response).unwrap();
   }
 }

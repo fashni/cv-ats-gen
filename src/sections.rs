@@ -1,3 +1,4 @@
+use std::error::Error;
 use std::fs;
 use serde::Deserialize;
 
@@ -48,18 +49,15 @@ pub struct CV {
 }
 
 impl CV {
-  pub fn from_yaml(file_path: &str) -> Option<Self> {
-    let fp = if file_path.ends_with(".yaml") {
-      file_path.to_string()
-    } else {
-      format!("{}.yaml", file_path)
-    }.replace("%20", " ");
-
-    if let Ok(yaml_str) = fs::read_to_string(fp) {
-      let cv: CV = serde_yaml::from_str(&yaml_str).expect("Failed to parse YAML");
-      Some(cv)
-    } else {
-      None
+  pub fn from_yaml(file_path: &str) -> Result<Option<Self>, Box<dyn Error>> {
+    match fs::read_to_string(file_path) {
+      Ok(yaml_str) => {
+        match serde_yaml::from_str::<Self>(&yaml_str) {
+          Ok(cv) => Ok(Some(cv)),
+          Err(e) => Err(Box::new(e)),
+        }
+      },
+      Err(_) => Ok(None),
     }
   }
 }
