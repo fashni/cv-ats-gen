@@ -11,15 +11,15 @@ pub fn render_cv(cv: &CV) -> Markup {
         title { (cv.name) " - CV" }
         link rel="stylesheet" type="text/css" href="/static/style.css" {}
       }
-      body id="wrapper" {
+      body {
         header {
-          h1 id="name" { (cv.name) }
+          h1 #name { (cv.name) }
           @if let Some(title) = &cv.title{
-            h2 id="title" { (title) }
+            h2 #title { (title) }
           }
           @if let Some(contact) = &cv.contact {
-            div id="contact" {
-              p {
+            div #contact {
+              p #hyperlinks {
                 a href={ "mailto:" (contact.email) } { (contact.email) }
                 " • " a href={ "tel:" (contact.phone) } { (contact.phone) }
                 @if let Some(linkedin) = &contact.linkedin {
@@ -30,31 +30,32 @@ pub fn render_cv(cv: &CV) -> Markup {
                 }
               }
               @if let Some(address) = &contact.address {
-                p id="address" { (address) }
+                p #address { (address) }
               }
             }
           }
         }
-        
+
         @if let Some(summary) = &cv.summary {
-          section {
-            p id="summary" { (summary) }
+          hr;
+          section #summary {
+            p { (summary) }
           }
         }
-        
+
         @if let Some(education) = &cv.education {
-          section {
-            h2 { "Education" }
+          hr;
+          section #education {
+            h2.section-header { "Education" }
             div.items {
               @for edu in education {
                 div.item {
                   p.item-text {
                     span { b { (edu.degree) } " - " (edu.institution) }
                     span.time { (edu.year) }
-                    @if let Some(gpa) = &edu.gpa {
-                      br;
-                      span.gpa { "GPA: " (format!("{:.2}", gpa)) }
-                    }
+                  }
+                  @if let Some(gpa) = &edu.gpa {
+                    p.gpa { "GPA: " (format!("{:.2}", gpa)) }
                   }
                   @if let Some(description) = &edu.description {
                     ul.description {
@@ -68,10 +69,11 @@ pub fn render_cv(cv: &CV) -> Markup {
             }
           }
         }
-        
+
         @if let Some(experience) = &cv.experience {
-          section {
-            h2 { "Experience" }
+          hr;
+          section #experience {
+            h2.section-header { "Experience" }
             div.items {
               @for exp in experience {
                 div.item {
@@ -91,15 +93,34 @@ pub fn render_cv(cv: &CV) -> Markup {
             }
           }
         }
-        
+
+        @if let Some(projects) = &cv.projects {
+          hr;
+          section #projects {
+            h2.section-header { "Projects" }
+            div.items.grid {
+              @for project in projects {
+                div.item {
+                  p.item-text {
+                    b {(project.name)} " - "
+                    span.techs { (project.technologies.join(", ")) }
+                  }
+                  p.description { (project.description) }
+                }
+              }
+            }
+          }
+        }
+
         @if let Some(certs) = &cv.certifications {
-          section {
-            h2 { "Certifications" }
+          hr;
+          section #certifications {
+            h2.section-header { "Certifications" }
             div.items {
               @for cert in certs {
                 div.item {
                   p.item-text {
-                    span { b {(cert.title)} " - " (cert.issuer) } 
+                    span { b {(cert.title)} " - " (cert.issuer) }
                     span.time { (cert.year) }
                   }
                 }
@@ -107,11 +128,12 @@ pub fn render_cv(cv: &CV) -> Markup {
             }
           }
         }
-        
+
         @if let Some(skills) = &cv.skills {
-          section {
-            h2 { "Skills" }
-            ul.list-items {
+          hr;
+          section #skills {
+            h2.section-header { "Skills" }
+            ul.items.grid {
               @for skill in skills {
                 li {
                   (skill)
@@ -120,11 +142,12 @@ pub fn render_cv(cv: &CV) -> Markup {
             }
           }
         }
-        
+
         @if let Some(languages) = &cv.languages {
-          section {
-            h2 { "Languages" }
-            ul.list-items {
+          hr;
+          section #languages {
+            h2.section-header { "Languages" }
+            ul.items.grid {
               @for language in languages {
                 li {
                   (language)
@@ -133,7 +156,8 @@ pub fn render_cv(cv: &CV) -> Markup {
             }
           }
         }
-        
+
+        hr;
         footer {
           p {
             "© 2024 " (cv.name)

@@ -1,4 +1,3 @@
-use std::error::Error;
 use std::fs;
 use serde::Deserialize;
 
@@ -36,6 +35,13 @@ pub struct Certification {
 }
 
 #[derive(Deserialize, Debug)]
+pub struct Project {
+  pub name: String,
+  pub description: String,
+  pub technologies: Vec<String>,
+}
+
+#[derive(Deserialize, Debug)]
 pub struct CV {
   pub name: String,
   pub title: Option<String>,
@@ -43,18 +49,19 @@ pub struct CV {
   pub summary: Option<String>,
   pub education: Option<Vec<Education>>,
   pub experience: Option<Vec<Experience>>,
+  pub projects:Option<Vec<Project>>,
   pub certifications: Option<Vec<Certification>>,
   pub skills: Option<Vec<String>>,
   pub languages: Option<Vec<String>>,
 }
 
 impl CV {
-  pub fn from_yaml(file_path: &str) -> Result<Option<Self>, Box<dyn Error>> {
+  pub fn from_yaml(file_path: &str) -> Result<Option<Self>, serde_yaml::Error> {
     match fs::read_to_string(file_path) {
       Ok(yaml_str) => {
         match serde_yaml::from_str::<Self>(&yaml_str) {
           Ok(cv) => Ok(Some(cv)),
-          Err(e) => Err(Box::new(e)),
+          Err(e) => Err(e),
         }
       },
       Err(_) => Ok(None),
