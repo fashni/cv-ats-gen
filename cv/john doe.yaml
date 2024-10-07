@@ -38,11 +38,12 @@ experience:
 
 projects:
   - name: "FinWatch"
+    url: "https://finwatch.io"
     description: "A web application for managing personal finances."
-    technologies: ["Rust", "PostgreSQL", "React"]
+    tools: ["Rust", "PostgreSQL", "React"]
   - name: "AutoCI/D"
     description: "An internal tool for automating CI/CD pipelines."
-    technologies: ["Python", "Docker", "Kubernetes"]
+    tools: ["Python", "Docker", "Kubernetes"]
 
 certifications:
   - title: Certified Kubernetes Administrator

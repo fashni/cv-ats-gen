@@ -19,14 +19,14 @@ pub fn render_cv(cv: &CV) -> Markup {
           }
           @if let Some(contact) = &cv.contact {
             div #contact {
-              p #hyperlinks {
+              p .contact-links {
                 a href={ "mailto:" (contact.email) } { (contact.email) }
-                " • " a href={ "tel:" (contact.phone) } { (contact.phone) }
+                " • " a href={ "tel:" (contact.phone.replace(" ", "").replace("-", "")) } { (contact.phone) }
                 @if let Some(linkedin) = &contact.linkedin {
-                  " • " a href=(linkedin) target="_blank" { (linkedin.replace("https://", "")) }
+                  " • " a href=(linkedin) target="_blank" { (linkedin.replace("https://", "").replace("http://", "")) }
                 }
                 @if let Some(website) = &contact.website {
-                  " • " a href=(website) target="_blank" { (website.replace("https://", "")) }
+                  " • " a href=(website) target="_blank" { (website.replace("https://", "").replace("http://", "")) }
                 }
               }
               @if let Some(address) = &contact.address {
@@ -78,8 +78,10 @@ pub fn render_cv(cv: &CV) -> Markup {
               @for exp in experience {
                 div.item {
                   p.item-text {
-                    span { b { (exp.title) } " - " (exp.company) }
+                    span { b { (exp.title) } }
                     span.time { (exp.duration) }
+                    br;
+                    span.company { (exp.company) }
                   }
                   @if let Some(description) = &exp.description {
                     ul.description {
@@ -102,8 +104,15 @@ pub fn render_cv(cv: &CV) -> Markup {
               @for project in projects {
                 div.item {
                   p.item-text {
-                    b {(project.name)} " - "
-                    span.techs { (project.technologies.join(", ")) }
+                    @if let Some(url) = &project.url {
+                      a href=(url) target="_blank" {
+                        b {(project.name)}
+                      }
+                    } @else {
+                      span { b {(project.name)} }
+                    }
+                    " - "
+                    span.tools { (project.tools.join(", ")) }
                   }
                   p.description { (project.description) }
                 }
@@ -120,8 +129,16 @@ pub fn render_cv(cv: &CV) -> Markup {
               @for cert in certs {
                 div.item {
                   p.item-text {
-                    span { b {(cert.title)} " - " (cert.issuer) }
+                    @if let Some(url) = &cert.url {
+                      a href=(url) target="_blank" {
+                        b {(cert.title)} 
+                      }
+                    } @else {
+                      span { b {(cert.title)} }
+                    }
                     span.time { (cert.year) }
+                    br;
+                    span.issuer { (cert.issuer) }
                   }
                 }
               }
@@ -161,10 +178,10 @@ pub fn render_cv(cv: &CV) -> Markup {
         footer {
           p {
             "© 2024 " (cv.name)
-            @if let Some(contact) = &cv.contact {
-              @if let Some(website) = &contact.website {
-                " • " a href=(website) target="_blank" { (website.replace("https://", "")) }
-              }
+          }
+          @if let Some(contact) = &cv.contact {
+            @if let Some(website) = &contact.website {
+              p .contact-links { a href=(website) target="_blank" { (website.replace("https://", "").replace("http://", "")) } }
             }
           }
         }

@@ -32,13 +32,15 @@ pub struct Certification {
   pub title: String,
   pub issuer: String,
   pub year: String,
+  pub url: Option<String>,
 }
 
 #[derive(Deserialize, Debug)]
 pub struct Project {
   pub name: String,
+  pub url: Option<String>,
   pub description: String,
-  pub technologies: Vec<String>,
+  pub tools: Vec<String>,
 }
 
 #[derive(Deserialize, Debug)]
