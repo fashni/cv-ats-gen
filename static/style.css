@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
 html {
   background-color: white;
 }
 
 body {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: "Nunito", Helvetica, Arial, sans-serif;
   font-size-adjust: .5;
   font-size: 100%;
   padding: 0 2em;
@@ -23,7 +25,7 @@ footer {
 }
 
 section {
-  margin: 1em auto;
+  margin: 0.5em auto;
   line-height: 1.4;
 }
 
@@ -53,12 +55,12 @@ ul.items {
   line-height: 1.1;
 }
 
-.section-header {
+/* .section-header {
   margin: .5em auto;
-}
+} */
 
 .item {
-  margin: .9em 0;
+  margin: .5em 0;
 }
 
 .item-text {
@@ -90,6 +92,7 @@ ul.items {
   grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
   row-gap: .5em;
   column-gap: 2em;
+  margin: 0.5em auto;
 }
 
 .grid .item {
@@ -107,6 +110,14 @@ ul.items {
 #summary, .description {
   text-align: justify;
   text-justify: inter-word;
+}
+
+#name, #title {
+  line-height: 1.1;
+}
+
+#title {
+  font-size: 1.2em;
 }
 
 #contact {

@@ -46,7 +46,10 @@ pub fn handle_request(request: &Request) -> Response<Cursor<Vec<u8>>> {
         match CV::from_yaml(&file_path) {
           Ok(Some(cv)) => Response::from_string(render_cv(&cv).into_string()).with_header(HTML_HEADER.clone()),
           Ok(None) => err_response(404, "404 Not Found"),
-          Err(_) => err_response(500, "500 Internal Server Error: Failed to parse YAML")
+          Err(e) => {
+            eprintln!("{e}");
+            err_response(500, "500 Internal Server Error: Failed to parse YAML")
+          }
         }
       } else {
         err_response(404, "404 Not Found")
