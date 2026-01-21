@@ -136,6 +136,12 @@ pub struct Skill {
 }
 
 #[derive(serde::Deserialize, Debug)]
+pub struct Language {
+  pub name: String,
+  pub fluency: Option<String>
+}
+
+#[derive(serde::Deserialize, Debug)]
 pub struct CV {
   pub name: String,
   pub title: Option<String>,
@@ -146,7 +152,7 @@ pub struct CV {
   pub projects:Option<Vec<Project>>,
   pub certifications: Option<Vec<Certification>>,
   pub skills: Option<Vec<Skill>>,
-  pub languages: Option<Vec<String>>,
+  pub languages: Option<Vec<Language>>,
 }
 
 impl CV {

@@ -139,6 +139,21 @@ pub fn render_cv(cv: &CV) -> Markup {
           }
         }
 
+        @if let Some(skills) = &cv.skills {
+          hr;
+          section #skills {
+            h2.section-header { "Skills" }
+            ul.items {
+              @for items in skills {
+                li.item {
+                  b { (items.category) ": " }
+                  (items.skills.join(", "))
+                }
+              }
+            }
+          }
+        }
+
         @if let Some(certs) = &cv.certifications {
           hr;
           section #certifications {
@@ -164,21 +179,6 @@ pub fn render_cv(cv: &CV) -> Markup {
           }
         }
 
-        @if let Some(skills) = &cv.skills {
-          hr;
-          section #skills {
-            h2.section-header { "Skills" }
-            ul.items {
-              @for items in skills {
-                li.item {
-                  b { (items.category) ": " }
-                  (items.skills.join(", "))
-                }
-              }
-            }
-          }
-        }
-
         @if let Some(languages) = &cv.languages {
           hr;
           section #languages {
@@ -186,15 +186,18 @@ pub fn render_cv(cv: &CV) -> Markup {
             ul.items.grid {
               @for language in languages {
                 li {
-                  (language)
+                  (language.name)
+                  @if let Some(fluency) = &language.fluency {
+                    " - " (fluency)
+                  }
                 }
               }
             }
           }
         }
 
-        hr;
         footer {
+          hr;
           p {
             "© 2026 " (cv.name)
           }

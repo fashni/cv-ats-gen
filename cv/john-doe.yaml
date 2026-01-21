@@ -81,6 +81,9 @@ skills:
       - Communication
 
 languages:
-  - English
-  - Japanese
-  - Spanish
+  - name: English
+    fluency: Native
+  - name: Japanese
+    fluency: Professional
+  - name: Spanish
+    fluency: Professional
